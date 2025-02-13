@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:03:26 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/12 19:36:01 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:20:27 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void				sort_two(t_node **stack);
 
 void				min_node_on_top(t_node **top);
 void				sort_stacks(t_node **a, t_node **b);
+int					stack_len(t_node *stack);
+int					is_sorted(t_node *stack);
 
 void				calc_push_cost(t_node *a, int len_a, int len_b);
 void				calc_all_push_costs(t_node *a, t_node *b);
@@ -69,7 +71,17 @@ int					calc_cost_up_down(t_node *a, int len_b);
 int					calc_cost_down_up(t_node *a, int len_a);
 
 void				find_target_a(t_node *a, t_node *b);
+void				find_target_b(t_node *a, t_node *b);
+void				set_index_both_stack(t_node *a, t_node *b);
 void				set_index_stack(t_node *top);
 void				mark_cheapest_node(t_node *top);
+
+void				move_a_to_b(t_node **a, t_node **b);
+void				move_b_to_a(t_node **a, t_node **b);
+
+t_node				*find_min_node(t_node *stack);
+t_node				*find_max_node(t_node *stack);
+
+int					is_target_in_a(t_node *a, t_node *target_node);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:04:03 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/12 19:40:36 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:39:29 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	sort_numbers(t_node **stack_a, t_node **stack_b, int size)
 		sort_three(stack_a);
 	else
 	{
-		// sort_stacks(stack_a, stack_b);
-		sort_three(stack_b);
+		sort_stacks(stack_a, stack_b);
 	}
 }
 /**

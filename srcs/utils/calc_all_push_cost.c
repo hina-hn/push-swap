@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:41:21 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/12 17:58:53 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:36:32 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	calc_push_cost(t_node *a, int len_a, int len_b)
 	cost_down_up = calc_cost_down_up(a, len_a);
 	a->push_cost = ft_min(ft_min(cost_up_up, cost_down_down),
 			ft_min(cost_up_down, cost_down_up));
+	printf("pushcost : %d\n", a->push_cost);
 	if (a->push_cost == cost_up_up)
 		a->best_direction = UP_UP;
 	else if (a->push_cost == cost_down_down)

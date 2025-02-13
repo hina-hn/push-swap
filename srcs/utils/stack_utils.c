@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:10:08 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/12 18:05:02 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/13 21:35:28 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,42 @@ void	find_target_a(t_node *a, t_node *b)
 		else
 			a->target_node = target_node;
 		a = a->next;
+		// printf("target-node: %d\n", a->target_node->nbr);
 	}
+}
+
+void	find_target_b(t_node *a, t_node *b)
+{
+	t_node	*current_a;
+	t_node	*target_node;
+	long	closest_larger_value;
+
+	while (b)
+	{
+		closest_larger_value = LONG_MAX;
+		current_a = a;
+		while (current_a)
+		{
+			if (current_a->nbr > b->nbr
+				&& current_a->nbr < closest_larger_value)
+			{
+				closest_larger_value = current_a->nbr;
+				target_node = current_a;
+			}
+			current_a = current_a->next;
+		}
+		if (closest_larger_value == LONG_MAX)
+			b->target_node = find_min_node(a);
+		else
+			b->target_node = target_node;
+		b = b->next;
+	}
+}
+
+void	set_index_both_stack(t_node *a, t_node *b)
+{
+	set_index_stack(a);
+	set_index_stack(b);
 }
 
 void	set_index_stack(t_node *top)
@@ -59,23 +94,31 @@ void	set_index_stack(t_node *top)
 
 void	mark_cheapest_node(t_node *top)
 {
-	long cheapest_cost;
-	t_node *cheapest_node;
-	t_node *current;
+	long	cheapest_cost;
+	t_node	*cheapest_node;
+	t_node	*current;
 
 	if (!top)
 		return ;
 	current = top;
+	while (current)
+	{
+		current->is_cheapest = 0;
+		current = current->next;
+	}
 	cheapest_cost = LONG_MAX;
+	cheapest_node = NULL;
+	current = top;
 	while (current)
 	{
 		if (current->push_cost < cheapest_cost)
 		{
 			cheapest_cost = current->push_cost;
-			cheapest_cost = current;
+			cheapest_node = current;
 		}
 		current = current->next;
 	}
 	if (cheapest_node)
 		cheapest_node->is_cheapest = 1;
+	printf("cheapest-node :%d\n", cheapest_node->nbr);
 }

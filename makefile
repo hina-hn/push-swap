@@ -23,7 +23,9 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/sort/sort_stacks.c \
 	   $(SRCDIR)/utils/calc_all_push_cost.c \
 	   $(SRCDIR)/utils/calc_cost.c \
-	   $(SRCDIR)/utils/stack_utils.c
+	   $(SRCDIR)/utils/stack_utils.c \
+	   $(SRCDIR)/utils/move_stack.c \
+	   $(SRCDIR)/utils/find_node_utils.c
 
 # オブジェクトファイル
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
