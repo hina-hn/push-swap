@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:10:08 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/13 21:35:28 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:18:44 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	find_target_a(t_node *a, t_node *b)
 		else
 			a->target_node = target_node;
 		a = a->next;
-		// printf("target-node: %d\n", a->target_node->nbr);
 	}
 }
 
@@ -120,5 +119,4 @@ void	mark_cheapest_node(t_node *top)
 	}
 	if (cheapest_node)
 		cheapest_node->is_cheapest = 1;
-	printf("cheapest-node :%d\n", cheapest_node->nbr);
 }

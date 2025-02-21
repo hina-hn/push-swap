@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:21:05 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/13 21:34:23 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/14 10:22:24 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	sort_stacks(t_node **a, t_node **b)
 	int	len_a;
 
 	len_a = stack_len((*a));
-	printf("stack-len: %d\n", len_a);
 	if (len_a-- > 3 && !is_sorted(*a))
 	{
 		push(b, a, "pb");
@@ -49,12 +48,9 @@ void	sort_stacks(t_node **a, t_node **b)
 		find_target_a(*a, *b);
 		calc_all_push_costs(*a, *b);
 		mark_cheapest_node(*a);
-		printf("is-cheapest: %d\n", (*a)->is_cheapest);
 		move_a_to_b(a, b);
 	}
 	sort_three(a);
-	print_stack(*a, 'A');
-	print_stack(*b, 'B');
 	while (*b)
 	{
 		set_index_both_stack(*a, *b);
