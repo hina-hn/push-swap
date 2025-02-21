@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 19:04:22 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/19 15:19:51 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:30:45 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	swap(t_node **stack, char *operation)
 	first->next = second->next;
 	second->next = first;
 	*stack = second;
-	printf("%s\n", operation);
+	ft_printf("%s\n", operation);
 }
 
 void	silent_swap(t_node **stack)
@@ -45,5 +45,5 @@ void	ss(t_node **a, t_node **b)
 {
 	silent_swap(a);
 	silent_swap(b);
-	printf("ss\n");
+	ft_printf("ss\n");
 }

@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmatsuba <hmatsuba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:45:58 by hmatsuba          #+#    #+#             */
-/*   Updated: 2024/11/21 17:36:52 by hmatsuba         ###   ########.fr       */
+/*   Updated: 2025/02/21 15:58:28 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "../srcs/ft_printf/ft_printf.h"
+# include "../srcs/ft_dprintf/ft_dprintf.h"
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>

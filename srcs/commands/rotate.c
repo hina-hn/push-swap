@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:49:36 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/19 15:19:47 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:02:21 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate(t_node **stack, char *operation)
 	while (last->next)
 		last = last->next;
 	last->next = first;
-	printf("%s\n", operation);
+	ft_printf("%s\n", operation);
 }
 
 void	silent_rotate(t_node **stack)
@@ -49,5 +49,5 @@ void	rr(t_node **a, t_node **b)
 {
 	silent_rotate(a);
 	silent_rotate(b);
-	printf("rr\n");
+	ft_printf("rr\n");
 }

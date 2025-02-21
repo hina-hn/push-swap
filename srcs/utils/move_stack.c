@@ -6,33 +6,28 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 17:50:47 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/14 10:19:16 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:55:19 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	move_a_to_b(t_node **a, t_node **b)
+t_node	*get_cheapest_node(t_node *a)
 {
-	t_node	*cheapest_node;
 	t_node	*current;
 
-	// t_node	*new_b_top;
-	if (!a || !(*a))
-		return ;
-	cheapest_node = NULL;
-	current = *a;
+	current = a;
 	while (current)
 	{
 		if (current->is_cheapest)
-		{
-			cheapest_node = current;
-			break ;
-		}
+			return (current);
 		current = current->next;
 	}
-	if (!cheapest_node)
-		return ;
+	return (NULL);
+}
+
+void	move_to_positions(t_node **a, t_node **b, t_node *cheapest_node)
+{
 	if (cheapest_node->best_direction == UP_UP)
 		while (*a != cheapest_node && *b != cheapest_node->target_node)
 			rr(a, b);
@@ -55,8 +50,19 @@ void	move_a_to_b(t_node **a, t_node **b)
 		else
 			reverse_rotate(b, "rrb");
 	}
-	push(b, a, "pb");
+}
 
+void	move_a_to_b(t_node **a, t_node **b)
+{
+	t_node	*cheapest_node;
+
+	if (!a || !(*a))
+		return ;
+	cheapest_node = get_cheapest_node(*a);
+	if (!cheapest_node)
+		return ;
+	move_to_positions(a, b, cheapest_node);
+	push(b, a, "pb");
 }
 
 void	move_b_to_a(t_node **a, t_node **b)

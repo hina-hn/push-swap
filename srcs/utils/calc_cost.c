@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:36:45 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/12 17:40:53 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:03:32 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ int	calc_cost_down_up(t_node *a, int len_a)
 {
 	return ((len_a - a->index) + a->target_node->index);
 }
-

@@ -2,8 +2,8 @@
 NAME = push_swap
 
 # コンパイラとフラグ
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinc -Ilibft
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Iinc -Ilibft/includes
 
 # ディレクトリ
 SRCDIR = srcs
@@ -15,6 +15,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 
 # ソースファイル
 SRCS = $(SRCDIR)/main.c \
+	   $(SRCDIR)/parse_args.c \
        $(SRCDIR)/commands/push.c \
        $(SRCDIR)/commands/reverse_rotate.c \
        $(SRCDIR)/commands/rotate.c \
@@ -31,7 +32,7 @@ SRCS = $(SRCDIR)/main.c \
 OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 # ヘッダファイル
-HEADERS = inc/push_swap.h
+HEADERS = inc/push_swap.h libft/includes/libft.h
 
 # ルール
 all: $(LIBFT) $(NAME)

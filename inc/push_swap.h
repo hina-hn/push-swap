@@ -6,11 +6,11 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:03:26 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/13 21:20:27 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:25:19 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_h
+#ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "libft.h"
@@ -56,6 +56,7 @@ void				sort_three(t_node **stack);
 void				sort_two(t_node **stack);
 
 void				min_node_on_top(t_node **top);
+void				move_a_to_b_until_sorted(t_node **a, t_node **b, int len_a);
 void				sort_stacks(t_node **a, t_node **b);
 int					stack_len(t_node *stack);
 int					is_sorted(t_node *stack);
@@ -76,6 +77,10 @@ void				set_index_both_stack(t_node *a, t_node *b);
 void				set_index_stack(t_node *top);
 void				mark_cheapest_node(t_node *top);
 
+void				rotate_stacks(t_node **a, t_node **b,
+						t_node *cheapest_node);
+void				move_to_position(t_node **stack, t_node *target,
+						int direction, int is_up);
 void				move_a_to_b(t_node **a, t_node **b);
 void				move_b_to_a(t_node **a, t_node **b);
 

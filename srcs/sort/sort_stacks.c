@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 18:21:05 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/14 10:22:24 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/21 16:47:10 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,8 @@ void	min_node_on_top(t_node **top)
 	}
 }
 
-void	sort_stacks(t_node **a, t_node **b)
+void	move_a_to_b_until_sorted(t_node **a, t_node **b, int len_a)
 {
-	int	len_a;
-
-	len_a = stack_len((*a));
-	if (len_a-- > 3 && !is_sorted(*a))
-	{
-		push(b, a, "pb");
-	}
-	if (len_a-- > 3 && !is_sorted(*a))
-	{
-		push(b, a, "pb");
-	}
 	while (len_a-- > 3 && !is_sorted(*a))
 	{
 		set_index_both_stack(*a, *b);
@@ -50,6 +39,18 @@ void	sort_stacks(t_node **a, t_node **b)
 		mark_cheapest_node(*a);
 		move_a_to_b(a, b);
 	}
+}
+
+void	sort_stacks(t_node **a, t_node **b)
+{
+	int	len_a;
+
+	len_a = stack_len(*a);
+	if (len_a-- > 3 && !is_sorted(*a))
+		push(b, a, "pb");
+	if (len_a-- > 3 && !is_sorted(*a))
+		push(b, a, "pb");
+	move_a_to_b_until_sorted(a, b, len_a);
 	sort_three(a);
 	while (*b)
 	{
