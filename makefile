@@ -26,6 +26,7 @@ SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/utils/calc_cost.c \
 	   $(SRCDIR)/utils/stack_utils.c \
 	   $(SRCDIR)/utils/move_stack.c \
+	   $(SRCDIR)/utils/find_target.c \
 	   $(SRCDIR)/utils/find_node_utils.c
 
 # オブジェクトファイル
