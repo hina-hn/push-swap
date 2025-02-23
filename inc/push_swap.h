@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:03:26 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/22 15:59:46 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:04:51 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,29 @@ enum				e_direction
 	DOWN_UP
 };
 
-t_node				*parse_arguments(int argc, char **argv);
 void				sort_numbers(t_node **stack_a, t_node **stack_b, int size);
 void				free_stack(t_node **stack);
 void				add_to_stack(t_node **stack, int value);
 void				print_stack(t_node *stack, char stack_name);
 
+t_node				*parse_arguments(int argc, char **argv);
+void				parse_string_argument(t_node **stack, char *arg);
+void				process_argument(t_node **stack, char *arg);
+void				free_split(char **split);
+
+int					safe_atoi(const char *str, int *out);
+int					is_valid_integer(const char *str, int *sign);
+int					is_duplicate(t_node *stack, int value);
+
 void				push(t_node **dest, t_node **src, char *operation);
 void				reverse_rotate(t_node **stack, char *operation);
+void				silent_reverse_rotate(t_node **stack);
 void				rrr(t_node **a, t_node **b);
 void				rotate(t_node **stack, char *operation);
+void				silent_rotate(t_node **stack);
 void				rr(t_node **a, t_node **b);
 void				swap(t_node **stack, char *operation);
+void				silent_swap(t_node **stack);
 void				ss(t_node **a, t_node **b);
 
 void				sort_three(t_node **stack);
@@ -72,20 +83,20 @@ int					calc_cost_down_up(t_node *a, int len_a);
 
 void				find_target_a(t_node *a, t_node *b);
 void				find_target_b(t_node *a, t_node *b);
+
 void				set_index_both_stack(t_node *a, t_node *b);
 void				set_index_stack(t_node *top);
+void				reset_cheapest_flag(t_node *top);
 void				mark_cheapest_node(t_node *top);
 
-void				rotate_stacks(t_node **a, t_node **b,
-						t_node *cheapest_node);
+t_node				*get_cheapest_node(t_node *a);
 void				move_to_position(t_node **stack, t_node *target,
 						int direction, int is_up);
 void				move_a_to_b(t_node **a, t_node **b);
 void				move_b_to_a(t_node **a, t_node **b);
+int					is_target_in_a(t_node *a, t_node *target_node);
 
 t_node				*find_min_node(t_node *stack);
 t_node				*find_max_node(t_node *stack);
-
-int					is_target_in_a(t_node *a, t_node *target_node);
 
 #endif

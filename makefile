@@ -16,6 +16,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 # ソースファイル
 SRCS = $(SRCDIR)/main.c \
 	   $(SRCDIR)/parse_args.c \
+	   $(SRCDIR)/parse_utils.c \
        $(SRCDIR)/commands/push.c \
        $(SRCDIR)/commands/reverse_rotate.c \
        $(SRCDIR)/commands/rotate.c \
@@ -36,7 +37,7 @@ OBJS = $(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 HEADERS = inc/push_swap.h libft/includes/libft.h
 
 # ルール
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
 # `push_swap` のコンパイル
 $(NAME): $(OBJS) $(LIBFT) | $(OBJDIR)

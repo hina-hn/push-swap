@@ -6,27 +6,11 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:04:03 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/22 15:53:01 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/23 13:07:47 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_node *stack, char stack_name)
-{
-	ft_printf("Stack %c: ", stack_name);
-	if (!stack)
-	{
-		ft_printf("(empty)\n");
-		return ;
-	}
-	while (stack)
-	{
-		ft_printf("%d ", stack->nbr);
-		stack = stack->next;
-	}
-	ft_printf("\n");
-}
 
 void	add_to_stack(t_node **stack, int value)
 {
@@ -80,13 +64,33 @@ int	main(int argc, char **argv)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	int		stack_size;
 
 	if (argc < 2)
 		return (0);
 	stack_a = parse_arguments(argc, argv);
 	stack_b = NULL;
-	sort_numbers(&stack_a, &stack_b, argc - 1);
+	stack_size = stack_len(stack_a);
+	sort_numbers(&stack_a, &stack_b, stack_size);
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 	return (0);
 }
+
+// void	print_stack(t_node *stack, char stack_name)
+// {
+// 	ft_printf("Stack %c: ", stack_name);
+// 	if (!stack)
+// 	{
+// 		ft_printf("(empty)\n");
+// 		return ;
+// 	}
+// 	while (stack)
+// 	{
+// 		ft_printf("%d ", stack->nbr);
+// 		stack = stack->next;
+// 	}
+// 	ft_printf("\n");
+// }
+
+// print_stack(stack_a, 'A');
