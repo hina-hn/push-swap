@@ -6,13 +6,13 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 15:48:20 by hmatsuba          #+#    #+#             */
-/*   Updated: 2025/02/23 14:39:08 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:55:04 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dprintf.h"
 
-int ft_dputchar(int fd, char c)
+int	ft_dputchar(int fd, char c)
 {
-    return (write(fd, &c, 1));
+	return (write(fd, &c, 1));
 }

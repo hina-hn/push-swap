@@ -1,2 +1,0 @@
-# push-swap
-push-swap

@@ -1,59 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_dprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:23:20 by hmatsuba          #+#    #+#             */
-/*   Updated: 2025/02/23 14:36:52 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/23 14:54:56 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_dprintf.h"
 
-int handle_format(int fd, va_list args, char format)
+int	handle_format(int fd, va_list args, char format)
 {
-    int printed_chars = 0;
+	int	printed_chars;
 
-    if (format == 'c')
-        printed_chars += ft_dputchar(fd, (char)va_arg(args, int));
-    else if (format == 's')
-        printed_chars += ft_dputstr(fd, va_arg(args, char *));
-    else if (format == 'p')
-        printed_chars += ft_dputaddress(fd, (unsigned long long)va_arg(args, void *), "0123456789abcdef");
-    else if (format == 'd' || format == 'i')
-        printed_chars += ft_dputnbr(fd, va_arg(args, int));
-    else if (format == 'u')
-        printed_chars += ft_dputnbr_unsigned(fd, va_arg(args, unsigned int));
-    else if (format == 'x')
-        printed_chars += ft_dputnbr_base(fd, va_arg(args, unsigned int), "0123456789abcdef");
-    else if (format == 'X')
-        printed_chars += ft_dputnbr_base(fd, va_arg(args, unsigned int), "0123456789ABCDEF");
-    else if (format == '%')
-        printed_chars += ft_dputchar(fd, '%');
-    
-    return printed_chars;
+	printed_chars = 0;
+	if (format == 'c')
+		printed_chars += ft_dputchar(fd, (char)va_arg(args, int));
+	else if (format == 's')
+		printed_chars += ft_dputstr(fd, va_arg(args, char *));
+	else if (format == 'p')
+		printed_chars += ft_dputaddress(fd, (unsigned long long)va_arg(args,
+					void *), "0123456789abcdef");
+	else if (format == 'd' || format == 'i')
+		printed_chars += ft_dputnbr(fd, va_arg(args, int));
+	else if (format == 'u')
+		printed_chars += ft_dputnbr_unsigned(fd, va_arg(args, unsigned int));
+	else if (format == 'x')
+		printed_chars += ft_dputnbr_base(fd, va_arg(args, unsigned int),
+				"0123456789abcdef");
+	else if (format == 'X')
+		printed_chars += ft_dputnbr_base(fd, va_arg(args, unsigned int),
+				"0123456789ABCDEF");
+	else if (format == '%')
+		printed_chars += ft_dputchar(fd, '%');
+	return (printed_chars);
 }
 
-int ft_dprintf(int fd, const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
-    va_list args;
-    int printed_chars = 0;
+	va_list	args;
+	int		printed_chars;
 
-    va_start(args, format);
-    while (*format)
-    {
-        if (*format != '%')
-            printed_chars += ft_dputchar(fd, *format);
-        else if (*format == '%' && *(format + 1) != '\0')
-        {
-            printed_chars += handle_format(fd, args, *(++format));
-        }
-        format++;
-    }
-    va_end(args);
-    return printed_chars;
+	printed_chars = 0;
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format != '%')
+			printed_chars += ft_dputchar(fd, *format);
+		else if (*format == '%' && *(format + 1) != '\0')
+		{
+			printed_chars += handle_format(fd, args, *(++format));
+		}
+		format++;
+	}
+	va_end(args);
+	return (printed_chars);
 }
 
 // #include <stdio.h>
