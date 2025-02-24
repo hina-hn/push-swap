@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 16:12:13 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/23 13:24:37 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:03:40 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,24 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	process_argument(t_node **stack, char *arg)
+void	process_argument(t_node **stack, char *arg, char **split_args)
 {
 	int	value;
 
 	if (!safe_atoi(arg, &value))
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n");
+		if (split_args)
+			free_split(split_args);
+		free_stack(stack);
 		exit(1);
 	}
 	if (is_duplicate(*stack, value))
 	{
 		ft_dprintf(STDERR_FILENO, "Error\n");
+		if (split_args)
+			free_split(split_args);
+		free_stack(stack);
 		exit(1);
 	}
 	add_to_stack(stack, value);
@@ -58,7 +64,7 @@ void	parse_string_argument(t_node **stack, char *arg)
 	j = 0;
 	while (split_args[j])
 	{
-		process_argument(stack, split_args[j]);
+		process_argument(stack, split_args[j], split_args);
 		j++;
 	}
 	free_split(split_args);
@@ -76,7 +82,7 @@ t_node	*parse_arguments(int argc, char **argv)
 		if (ft_strchr(argv[i], ' '))
 			parse_string_argument(&stack_a, argv[i]);
 		else
-			process_argument(&stack_a, argv[i]);
+			process_argument(&stack_a, argv[i], NULL);
 		i++;
 	}
 	return (stack_a);

@@ -6,7 +6,7 @@
 /*   By: YourName <your.email@example.com>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:03:26 by YourName          #+#    #+#             */
-/*   Updated: 2025/02/23 13:04:51 by YourName         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:02:28 by YourName         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void				print_stack(t_node *stack, char stack_name);
 
 t_node				*parse_arguments(int argc, char **argv);
 void				parse_string_argument(t_node **stack, char *arg);
-void				process_argument(t_node **stack, char *arg);
+void				process_argument(t_node **stack, char *arg,
+						char **split_args);
 void				free_split(char **split);
 
 int					safe_atoi(const char *str, int *out);
